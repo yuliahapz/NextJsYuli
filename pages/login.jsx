@@ -15,7 +15,7 @@ const Login =()=> {
 
         try {
         const res = await axios.post (
-            "https://api-boothcamp.do.dibimbing.id/api/v1/login",
+            "https://api-bootcamp.do.dibimbing.id/api/v1/login",
             
             { email: email, password: password },
             {
@@ -25,8 +25,8 @@ const Login =()=> {
                 }
             }
         );
-
-        const token = res.data.data.token;
+        // console.log(response.data);
+        const token = res.data?.token;
 
         setCookie("token", token,{
             maxAge: 60 * 60 * 24,
