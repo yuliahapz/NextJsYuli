@@ -14,11 +14,11 @@ export default function ListMenu({makanan}) {
     <div>
       <h1>List Menu</h1>
       <ul>
-        {makanan.map(makanan=>(
-          <li key={makanan.id}>
-            <h3>{makanan.name}</h3>
-            <p>{makanan.description}</p>
-            <button onClick={() => router.push(`/makanan/${makanan.id}`)}>Detail</button>
+        {makanan.map((item)=>(
+          <li key={item.id}>
+            <h3>{item.name}</h3>
+            <p>{item.description}</p>
+            <button onClick={() => router.push(`/${item.id}`)}>Detail</button>
           </li>
         ))}
       </ul>
@@ -28,7 +28,6 @@ export default function ListMenu({makanan}) {
 
 export async function getServerSideProps(context) {
   const { req, res } = context;
-
   const token = getCookie("token", { req, res });
 
   if (!token) {
@@ -41,7 +40,7 @@ export async function getServerSideProps(context) {
   }
 
   try {
-  const response = await axios.get("https://api-boothcamp.do.dibimbing.id/api/v1/food", {
+  const response = await axios.get("https://api-boothcamp.do.dibimbing.id/api/v1/foods", {
     headers: {
       "Content-Type": "application/json",
       apiKey: apiKey,
@@ -51,7 +50,8 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      makanan: response.data.data,}
+      makanan: response.data.data,
+    },
   };
 } catch (error) {
   console.error('Error fetching data:', error.response?.data);
