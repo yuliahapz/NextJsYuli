@@ -16,7 +16,6 @@ const Login =()=> {
         try {
         const res = await axios.post (
             "https://api-bootcamp.do.dibimbing.id/api/v1/login",
-            
             { email: email, password: password },
             {
                 headers : {
@@ -25,18 +24,23 @@ const Login =()=> {
                 }
             }
         );
-        // console.log(response.data);
+        console.log(res.data);
         const token = res.data?.token;
 
         setCookie("token", token,{
             maxAge: 60 * 60 * 24,
             path: '/',});
 
-        router.push("/makanan");
+        router.push("/food/makanan");
     }   catch(error) {
         console.error('Login failed:', error.response?.data);
-        alert(error.res?.data?.message || error.message);
-    }
+
+        if (error.response?.status === 404) {
+            alert ("Invalid email or password, Please try again");
+        }else{
+            alert(error.res?.data?.message || error.message);
+        }
+    };
 }
 return (
     <div className={styles.loginContainer}>

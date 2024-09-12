@@ -1,18 +1,23 @@
-import { getCookie } from "cookies-next";
+import { deleteCookie, getCookie } from "cookies-next";
 import axios from "axios";
 import { useRouter } from "next/router";
-import Image from "next/image";
 
 const apiKey = 'w05KkI9AWhKxzvPFtXotUva-';
 
 export default function ListMenu({makanan}) {
   const router = useRouter();
 
+  const handleLogout =()=> {
+    deleteCookie("token");
+    router.push("/login");
+  }
+
   if (!makanan || makanan.length === 0) {
     return <h2>Tidak Ada Menu Tersedia</h2>;
   }
   return (
     <div>
+      <button onClick={handleLogout}>Logout</button>
       <h1>List Menu</h1>
       <ul>
         {makanan.map((item)=>(
@@ -20,11 +25,13 @@ export default function ListMenu({makanan}) {
             <h3>{item.name}</h3>
             <p>{item.description}</p>
             <p>{item.imageUrl}</p>
-            <Image 
-              src={item.image_url}
+            <img 
+              src={item.imageUrl}
               alt={item.name}
-              width={100}
-              height={100}
+              width={150}
+              height={150}
+              style={{ cursor: 'pointer', borderRadius: '8px', objectFit: 'cover' }}
+              onClick={() => router.push(`/${item.id}`)}
               />
               <p>[{item.ingredients}]</p>
               <h1>{item.price}</h1>
