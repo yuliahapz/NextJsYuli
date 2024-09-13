@@ -43,16 +43,16 @@ const Login =()=> {
 }
 return (
     <div className="relative flex items-center justify-center min-h-screen bg-gray-800">
-            <img 
-                src="https://wallpapercave.com/wp/wp8947204.jpg" 
-                alt="Food Collage" 
-                className="absolute inset-0 w-full h-full object-cover brightness-50" 
-            />
-        <div className="relative w-full max-w-md p-8 bg-white rounded-lg shadow-md">
-            <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="mb-4">
-                    <label htmlFor="email" className="block text-gray-700 font-medium mb-2">Email</label>
+        <img
+            src="https://wallpapercave.com/wp/wp8947204.jpg"
+            alt="Food Collage"
+            className="absolute inset-0 w-full h-full object-cover brightness-50"
+        />
+        <div className="relative w-full max-w-lg p-6 md:p-8 bg-white rounded-lg shadow-lg md:max-w-md">
+            <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-6">Login</h2>
+            <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                    <label htmlFor="email" className="block text-gray-700 text-sm font-medium mb-2">Email</label>
                     <input
                         id="email"
                         type="email"
@@ -60,11 +60,11 @@ return (
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter your email"
                         required
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-100 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                 </div>
-                <div className="mb-4">
-                    <label htmlFor="password" className="block text-gray-700 font-medium mb-2">Password</label>
+                <div>
+                    <label htmlFor="password" className="block text-gray-700 text-sm font-medium mb-2">Password</label>
                     <input
                         id="password"
                         type="password"
@@ -72,20 +72,20 @@ return (
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="Enter your password"
                         required
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-100 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                 </div>
                 <button
                     type="submit"
-                    className="w-full py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 mb-3"
-                >
+                    className="w-full py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400">
                     Login
                 </button>
-                <pre className="text-gray-300 text-xs">user dummy: miftahfarhan@gmail.com</pre>
-                <pre className="text-gray-300 text-xs">password: qwerty123</pre>
+                <div className="text-center text-gray-300 text-xs mt-4">
+                    <pre>user dummy: miftahfarhan@gmail.com</pre>
+                    <pre>password: qwerty123</pre>
+                </div>
             </form>
         </div>
     </div>
-);
-}
+)};
 export default Login;
