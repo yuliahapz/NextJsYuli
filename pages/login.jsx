@@ -77,10 +77,12 @@ return (
                 </div>
                 <button
                     type="submit"
-                    className="w-full py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4"
+                    className="w-full py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 mb-3"
                 >
                     Login
                 </button>
+                <pre className="text-gray-300 text-xs">user dummy: miftahfarhan@gmail.com</pre>
+                <pre className="text-gray-300 text-xs">password: qwerty123</pre>
             </form>
         </div>
     </div>
