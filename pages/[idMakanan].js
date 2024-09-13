@@ -14,18 +14,36 @@ export default function DetailMenu({ food }) {
   }
 
   return (
-    <div>
-      <h1>{food.name || 'Nama Makanan Tidak Tersedia'}</h1>
-      <img
-        src={food.imageUrl || '/path/to/default-image.png'} // Ganti dengan URL gambar default jika perlu
-        alt={food.name || 'Gambar Makanan'}
-        width={200}
-        height={200}
-        style={{ borderRadius: '8px', objectFit: 'cover' }} // Styling tambahan untuk tampilan gambar
-      />
-      <p>Created at: {food.createdAt ? new Date(food.createdAt).toLocaleDateString() : 'Tanggal Tidak Tersedia'}</p>
-      <p><a href="/">Kembali ke List Menu</a></p>
-      <button onClick={handleLogout}>Logout</button>
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <div className="bg-white border border-gray-300 shadow-lg rounded-lg p-8 max-w-lg text-center">
+        <h1 className="text-2xl font-bold text-gray-800 mb-4">
+          {food.name || 'Nama Makanan Tidak Tersedia'}
+        </h1>
+        
+        <img
+          src={food.imageUrl || '/path/to/default-image.png'} 
+          alt={food.name || 'Gambar Makanan'}
+          className="mx-auto w-48 h-48 object-cover rounded-lg shadow-md mb-6"
+        />
+
+        <p className="text-gray-600 mb-4">
+          {food.description || 'Deskripsi Tidak Tersedia'}
+        </p>
+
+        <p className="text-sm text-gray-500">
+          Dibuat pada: {food.createdAt ? new Date(food.createdAt).toLocaleDateString() : 'Tanggal Tidak Tersedia'}
+        </p>
+
+        <a href="/" className="mt-6 inline-block bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">
+          Kembali ke List Menu
+        </a>
+        
+        <button 
+          onClick={handleLogout} 
+          className="mt-4 inline-block bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition duration-300">
+          Logout
+        </button>
+      </div>
     </div>
   );
 }

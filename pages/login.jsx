@@ -1,4 +1,3 @@
-import styles from "../styles/Login.module.css"
 import { useRouter } from "next/router";
 import axios from "axios";
 import { useState } from "react";
@@ -31,7 +30,7 @@ const Login =()=> {
             maxAge: 60 * 60 * 24,
             path: '/',});
 
-        router.push("/food/makanan");
+        router.push("/");
     }   catch(error) {
         console.error('Login failed:', error.response?.data);
 
@@ -43,26 +42,48 @@ const Login =()=> {
     };
 }
 return (
-    <div className={styles.loginContainer}>
-        <form onSubmit={handleSubmit} className={styles.loginForm}>
-        <h2>Login</h2>
-        <p>Email</p>
-        <input
-            type="text"
-            value={email}
-            onChange={(e)=> setEmail(e.target.value)}
-            placeholder="Enter your email"
-            required/>
-        <p>Password</p>
-        <input
-            type="password"
-            value={password}
-            onChange={(e)=> setPassword(e.target.value)}
-            placeholder="Enter your password"
-            required/>
-            <button type="submit">Login</button>
+    <div className="relative flex items-center justify-center min-h-screen bg-gray-800">
+            <img 
+                src="https://wallpapercave.com/wp/wp8947204.jpg" 
+                alt="Food Collage" 
+                className="absolute inset-0 w-full h-full object-cover brightness-50" 
+            />
+        <div className="relative w-full max-w-md p-8 bg-white rounded-lg shadow-md">
+            <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
+            <form onSubmit={handleSubmit}>
+                <div className="mb-4">
+                    <label htmlFor="email" className="block text-gray-700 font-medium mb-2">Email</label>
+                    <input
+                        id="email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter your email"
+                        required
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                </div>
+                <div className="mb-4">
+                    <label htmlFor="password" className="block text-gray-700 font-medium mb-2">Password</label>
+                    <input
+                        id="password"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Enter your password"
+                        required
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+                    />
+                </div>
+                <button
+                    type="submit"
+                    className="w-full py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4"
+                >
+                    Login
+                </button>
             </form>
-            </div>
+        </div>
+    </div>
 );
 }
 export default Login;
